@@ -1,5 +1,8 @@
 # 百度翻译爬虫
 
+文章首发于我的微信公众号: [https://mp.weixin.qq.com/s/uehzjUl8QEaQHtCx4o4BXg](https://mp.weixin.qq.com/s/uehzjUl8QEaQHtCx4o4BXg)
+
+
 ## 项目简介
 
 <li>可自动翻译。</li>
