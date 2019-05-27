@@ -8,13 +8,14 @@
 # 微信公众号         月小水长(ID: inspurer)
 
 import requests, math,os.path
+from set import USER_NAME,PASSWORD
 from bs4 import BeautifulSoup
 BASE_PATH = 'imgs'
 if not os.path.exists(BASE_PATH):
     os.mkdir(BASE_PATH)
 def main():
     session = login()
-    keyword = input('请输入贴吧名称：')
+    keyword = input('请输入你想要爬取图片的贴吧：')
     # 构建贴吧主页url
     index_url = "https://tieba.baidu.com/f?kw={}".format(keyword)
     # 获取帖子总页数（经过测试发现不登录的情况下是无法获取帖子数目的）
@@ -38,19 +39,15 @@ def main():
         for img in img_urls:
             i = i + 1
             with open(img_dir + "/" + str(i) + '.jpg', 'wb') as f:
-                print("正在下载第" + str(i) + "张图片" )
+                print("开始下载第" + str(i) + "张图片" )
                 f.write(session.get(img.attrs['src']).content)
-                print("图片下载完毕！")
+                print("图片下载成功！")
 # 模拟登陆的方法
 def login():
-    # 登录的用户名
-    username = '18272415912'
-    # 登录的密码
-    password = 'CSUxiaotao1998'
     # 登录所需的参数
     login_data = {
-    'username': username,
-    'password': password,
+    'username': USER_NAME,
+    'password': PASSWORD,
     'u': 'https://tieba.baidu.com/index.html?traceid=#',
     #tb 贴吧，表明是从百度贴吧登录百度站点的
     'tpl': 'tb',
@@ -114,4 +111,4 @@ def get_tiezi_list(tiezi_url, session):
     return static_tiezi_urls
 
 if __name__ == '__main__':
- main()
+    main()

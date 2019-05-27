@@ -45,5 +45,13 @@ class baidu():
         return sign
 
 if __name__ == "__main__":
-    result = baidu().translate("华为")
-    print(result)
+    t = baidu()
+    to_translate = input('请输入待翻译词:')
+    while True:
+        result = t.translate(to_translate)
+        print('{}的翻译结果是:{}'.format(to_translate,result))
+        to_translate = input('请继续输入待翻译词，或者回车结束')
+        # 翻译结束
+        if len(to_translate) == 0:
+            print('本次翻译结束')
+            break
